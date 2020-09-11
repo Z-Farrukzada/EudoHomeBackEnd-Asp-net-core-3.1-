@@ -1,0 +1,47 @@
+﻿@model IEnumerable<NewEvent>
+@{ Layout = null;
+    int count = 0; }
+
+
+@foreach (var item in Model)
+{
+    if (count == 4)
+    {
+        <div class="single-event">
+            <div class="event-date">
+                <h3><a href="event-details.html">  <span style="width:50px !important; font-size: 20px !important">@item.EventTime</span></a></h3>
+            </div>
+            <div class="event-content text-left">
+                <div class="event-content-left">
+                    <h4><a href="event-details.html">@item.Name</a></h4>
+                    <ul>
+                        <li><i class="fa fa-clock-o"></i>@item.EventStart - @item.EventFinish</li>
+                        <li><i class="fa fa-map-marker"></i>@item.EventPlace</li>
+                    </ul>
+                </div>
+                <div class="event-content-right">
+                    <a class="default-btn" href="event-details.html">join now</a>
+                </div>
+            </div>
+        </div> }
+    else
+    {
+        <div class="single-event mb-35">
+            <div class="event-date">
+                <h3><a href="event-details.html">  <span style="width:50px !important; font-size: 20px !important">@item.EventTime</span></a></h3>
+            </div>
+            <div class="event-content text-left">
+                <div class="event-content-left">
+                    <h4><a href="event-details.html">@item.Name</a></h4>
+                    <ul>
+                        <li><i class="fa fa-clock-o"></i>@item.EventStart - @item.EventFinish</li>
+                        <li><i class="fa fa-map-marker"></i>@item.EventPlace</li>
+                    </ul>
+                </div>
+                <div class="event-content-right">
+                    <a class="default-btn" href="event-details.html">join now</a>
+                </div>
+            </div>
+        </div>}
+    count++;
+}
