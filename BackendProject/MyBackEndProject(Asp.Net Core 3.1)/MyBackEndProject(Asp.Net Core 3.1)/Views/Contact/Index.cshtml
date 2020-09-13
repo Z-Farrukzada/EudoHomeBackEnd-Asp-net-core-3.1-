@@ -1,0 +1,87 @@
+﻿@model HomeVm
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewData["Title"] = "Index";
+    int count = 1;
+}
+
+<!-- Banner Area Start -->
+@foreach (var item in ViewBag.Banner)
+{
+    <div class="banner-area-wrapper" style=" background: rgba(0, 0, 0, 0) url('~/../img/banner/@item.BannerImage') no-repeat scroll center center / cover ;
+  position: relative;
+  width: 100%;
+  z-index: 1;">
+        <div class="banner-area text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="banner-content-wrapper">
+                            <div class="banner-content">
+                                <h2>@item.BannerTitle</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<!-- Banner Area End -->
+<div class="map-area">
+    <!-- google-map-area start -->
+    <div class="google-map-area">
+        <!--  Map Section -->
+        <div id="contacts" class="map-area">
+            <div id="googleMap" style="width:100%;height:440px;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3121656.012188483!2d47.75453!3d40.17585849999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2s!4v1599915134900!5m2!1sru!2s" width="100%" height="450" frameborder="0" style="border:0;"
+                        allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="contact-area pt-150 pb-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-sm-5 col-xs-12">
+                <div class="contact-contents text-center">
+                    @foreach (var item in Model.logos)
+                    {
+                        if (count == 3)
+                        {
+                            <div class="single-contact">
+                                <div class="contact-icon">
+                                    <img src="~/img/contact/@item.Contactimage" alt="contact">
+                                </div>
+                                <div class="contact-add">
+                                    <h3>address</h3>
+                                    <p>@item.EudoHomeAdress</p>
+                                    <p>@item.EudoHomePlaceCountry</p>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="single-contact mb-65">
+                                <div class="contact-icon">
+                                    <img src="~/img/contact/@item.Contactimage" alt="contact">
+                                </div>
+                                <div class="contact-add">
+                                    <h3>address</h3>
+                                    <p>@item.EudoHomeAdress</p>
+                                    <p>@item.EudoHomePlaceCountry</p>
+                                </div>
+                            </div>
+                        }
+                        count++;
+                    }
+
+                   
+                </div>
+            </div>
+            <div class="col-md-7 col-sm-7 col-xs-12">
+                @await Component.InvokeAsync("Message")
+            </div>
+        </div>
+    </div>
+</div>

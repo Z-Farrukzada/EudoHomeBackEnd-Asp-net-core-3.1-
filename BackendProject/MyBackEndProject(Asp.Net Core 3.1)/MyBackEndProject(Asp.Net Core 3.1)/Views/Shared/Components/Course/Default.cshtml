@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Course>
+@{
+    Layout = null;
+    int count = 1;
+}
+
+<!-- Course Start -->
+
+       
+    <div class="row">
+        @foreach (Course item in Model)
+        {
+
+            if (count == 9)
+            {
+                <div class="col-md-4 hidden-sm col-xs-12">
+                    <div class="single-course">
+                        <div class="course-img">
+                            <a asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id">
+                                <img src="~/img/course/@item.Image" alt="course">
+                                <div class="course-hover">
+                                    <i class="fa fa-link"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="course-content">
+                            <h3><a href="course-details.html">@item.CourseName</a></h3>
+                            <p>@item.Description</p>
+                            <a class="default-btn" asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id">read more</a>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-course mb-70">
+                        <div class="course-img">
+                            <a asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id">
+                                <img src="~/img/course/@item.Image" alt="course">
+                                <div class="course-hover">
+                                    <i class="fa fa-link"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="course-content">
+                            <h3><a href="course-details.html">@item.CourseName</a></h3>
+                            <p>@item.Description</p>
+                            <a class="default-btn" asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id">read more</a>
+                        </div>
+                    </div>
+                </div>
+            }
+            count++;
+
+
+        }
+       </div>
+    
+<!-- Course End -->

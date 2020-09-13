@@ -1,0 +1,33 @@
+﻿@model IEnumerable<NewEvent>
+<div class="row" id="EventList">
+    @foreach (var events in Model)
+    {
+
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="single-event mb-60">
+                <div class="event-img">
+                    <a href="event-details.html">
+                        <img src="~/img/event/@events.Image" alt="event">
+                        <div class="course-hover">
+                            <i class="fa fa-link"></i>
+                        </div>
+                    </a>
+                    <div class="event-date">
+                        <h3> <span style="width:50px !important; font-size: 20px !important;padding-left:15px;font-weight:bold;">@events.EventTime</span></h3>
+                    </div>
+                </div>
+                <div class="event-content text-left">
+                    <h4><a asp-controller="Event"  asp-action="Detail" asp-route-id="@events.Id">@events.Name</a></h4>
+                    <ul>
+                        <li><span>time:</span> @events.EventStart- @events.EventFinish</li>
+                        <li><span>venue</span>@events.EventPlace</li>
+                    </ul>
+                    <div class="event-content-right">
+                        <a class="default-btn" asp-controller="Event"  asp-action="Detail" asp-route-id="@events.Id">join now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
