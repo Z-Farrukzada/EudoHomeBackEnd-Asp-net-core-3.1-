@@ -1,0 +1,42 @@
+﻿@model IEnumerable<NoticeBoard>
+@{
+    Layout = null;
+    int count = 0;
+}
+
+    
+           
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="notice-left">
+                        @foreach (var item in Model)
+                        {
+
+                            <h3>@Html.Raw(item.Title)</h3>
+                            if (count == 3)
+                            {
+                                <div class="single-notice-left pb-75">
+                                    <h4>@Html.Raw(item.NoticeTime)</h4>
+                                    <p>@Html.Raw(item.Description) </p>
+                                </div>
+                            }
+                            else if (count == 6 || count == 9)
+                            {
+                                <div class="single-notice-left pb-70">
+                                    <h4>@Html.Raw(item.NoticeTime)</h4>
+                                    <p>@Html.Raw(item.Description) </p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="single-notice-left mb-25 pb-25">
+                                    <h4>@Html.Raw(item.NoticeTime)</h4>
+                                    <p>@Html.Raw(item.Description) </p>
+                                </div>
+                            }
+                            count++;
+
+                        }
+                    </div>
+                </div>
+          
+       

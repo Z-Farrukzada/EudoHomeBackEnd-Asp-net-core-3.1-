@@ -1,0 +1,92 @@
+﻿@model Testimonial
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h2 class="card-title">Testimonial Table</h2>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table tablesorter " id="">
+                            <thead class=" text-primary">
+                                <tr class="text-center font-weight-bold">
+                                    <th>
+                                        Image
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        SurName
+                                    </th>
+                                    <th>
+                                        Job
+                                    </th>
+                                    <th>
+                                        CourseName
+                                    </th>
+                                    <th>
+                                        BackGroundImage
+                                    </th>
+                                    <th>
+                                        Settings
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody class="text-center font-weight-bold">
+                                <tr class="text-center imagecolon">
+                                    <td>
+                                        <img src="~/img/testimonial/@Model.Image" style="width:300px;height:160px;object-fit:cover;" alt="Alternate Text" />
+
+                                    </td>
+                                    <td>
+                                        @Html.Raw(Model.Description)
+                                    </td>
+                                    <td>
+                                        @Model.Name
+                                    </td>
+
+                                    <td>
+                                        @Model.Surname
+                                    </td>
+                                    <td>
+                                        @Model.Job
+                                    </td>
+                                    <td>
+                                        @Model.CourseName
+                                    </td>
+                                    <td>
+                                        <img src="~/img/testimonial/@Model.BackgroundImage" style="width:300px;height:160px;object-fit:cover;" alt="Alternate Text" />
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary my-1 float-right" asp-controller="Testimonial" asp-action="Update" asp-area="AdminPanel"> Update </a>
+                                    </td>
+                                </tr>
+
+
+                            </tbody>
+
+                        </table>
+                        <a class="btn btn-primary mx-3 float-right" asp-controller="DashBoard" asp-action="Index" asp-area="AdminPanel"> Back </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
