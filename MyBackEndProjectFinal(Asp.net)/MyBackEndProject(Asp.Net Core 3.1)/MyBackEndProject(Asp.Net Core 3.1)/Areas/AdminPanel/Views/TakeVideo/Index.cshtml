@@ -1,0 +1,60 @@
+﻿@model TakeVideo
+@{
+    ViewData["Title"] = "Index";
+}
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card ">
+                    <div class="card-header">
+                        <h2 class="card-title">VideoLink Table</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table tablesorter " >
+                                <thead class=" text-primary">
+                                    <tr class="text-center font-weight-bold">
+                                        <th>
+                                            Video(Link)
+                                        </th>
+                                        <th>
+                                            Title
+                                        </th>
+                                       
+                                        <th>
+                                            Settings
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center font-weight-bold">
+                                    <tr class="text-center imagecolon">
+                                       
+                                       
+                                        <td>
+                                            @Html.Raw(Model.Video)
+                                        </td>
+
+                                        <td>
+                                            @Html.Raw(Model.Title)
+                                        </td>
+                                    
+                                       
+                                        <td>
+                                            <a class="btn btn-primary my-1 float-right" asp-controller="TakeVideo" asp-action="Update" asp-area="AdminPanel"> Update </a>
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+
+                            </table>
+                            <a class="btn btn-primary mx-3 float-right" asp-controller="DashBoard" asp-action="Index" asp-area="AdminPanel"> Back </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>

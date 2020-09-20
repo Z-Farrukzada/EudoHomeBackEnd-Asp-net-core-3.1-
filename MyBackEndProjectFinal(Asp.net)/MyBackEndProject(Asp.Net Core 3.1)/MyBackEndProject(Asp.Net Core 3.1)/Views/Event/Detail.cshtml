@@ -1,0 +1,159 @@
+﻿@model DetailVm
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewData["Title"] = "Detail";
+    int count = 1;
+}
+
+<!-- Banner Area Start -->
+@foreach (var item in ViewBag.Banner)
+{
+    <div class="banner-area-wrapper" style=" background: rgba(0, 0, 0, 0) url('~/../img/banner/@item.BannerImage') no-repeat scroll center center / cover ;
+  position: relative;
+  width: 100%;
+  z-index: 1;">
+        <div class="banner-area text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="banner-content-wrapper">
+                            <div class="banner-content">
+                                <h2>@item.BannerTitle</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<!-- Banner Area End -->
+<!-- Event Details Start -->
+<div class="event-details-area blog-area pt-150 pb-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="event-details">
+                    <div class="event-details-img">
+                        <img src="~/img/event/@Model.newEvents.Image" style="width:100%;height:400px;object-fit:cover;" alt="event-details">
+                        <div class="event-date " style="width:70px !important;">
+                            <h3> <span> @Model.newEvents.EventTime </span>  </h3>
+                        </div>
+                    </div>
+                    <div class="event-details-content">
+                        <h2>  @Model.newEvents.Name</h2>
+                        <ul>
+                            <li><span>time : </span>@Model.newEvents.EventStart - @Model.newEvents.EventFinish</li>
+                            <li><span>venue : </span>@Model.newEvents.EventPlace</li>
+                        </ul>
+                        <p>@Model.newEvents.EventAbout</p>
+                        <div class="speakers-area fix">
+                            <h4>speakers</h4>
+                            <div class="single-speaker">
+                                <div class="speaker-img">
+                                    <img src="~/img/event/@Model.newEvents.NewManagmentEvents.ElementAt(0).NewManagmentBoard.Image" style="width:80px;height:80px;" alt="speaker">
+                                </div>
+                                <div class="speaker-name">
+                                    <h5>@Model.newEvents.NewManagmentEvents.ElementAt(0).NewManagmentBoard.Name  @Model.newEvents.NewManagmentEvents.ElementAt(0).NewManagmentBoard.Surname </h5>
+                                    <p>@Model.newEvents.NewManagmentEvents.ElementAt(0).NewManagmentBoard.Position </p>
+                                </div>
+                            </div>
+                            <div class="single-speaker">
+                                <div class="speaker-img">
+                                    <img src="~/img/event/@Model.newEvents.NewManagmentEvents.ElementAt(1).NewManagmentBoard.Image" style="width:80px;height:80px;" alt="speaker">
+                                </div>
+                                <div class="speaker-name">
+                                    <h5>@Model.newEvents.NewManagmentEvents.ElementAt(1).NewManagmentBoard.Name @Model.newEvents.NewManagmentEvents.ElementAt(1).NewManagmentBoard.Surname </h5>
+                                    <p>@Model.newEvents.NewManagmentEvents.ElementAt(1).NewManagmentBoard.Position </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @await Component.InvokeAsync("Message")
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blog-sidebar right">
+                    <div class="single-blog-widget mb-50">
+                        <h3>search</h3>
+                        <div class="blog-search">
+                            <form id="search" action="#">
+                                <input type="search" placeholder="Search..." name="search" />
+                                <button type="submit">
+                                    <span><i class="fa fa-search"></i></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <h3>categories</h3>
+                        <ul>
+                            @foreach (var item in Model.Courses)
+                            {
+                                <li><a asp-controller="Event" asp-action="Index" style="text-transform:capitalize;"> @item.CourseName</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <div class="single-blog-banner">
+                            <a href="blog-details.html" id="blog"><img src="~/img/event/@Model.newEvents.Image" style="height:350px;object-fit:cover;"  alt="blog"></a>
+                            <h2>best<br> eductaion<br> theme</h2>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <h3>latest post</h3>
+                        @foreach (Blog item in Model.Blogs)
+                        {
+                            if (count == 3)
+                            {
+                                <div class="single-post">
+                                    <div class="single-post-img">
+                                        <a href="blog-details.html">
+                                            <img src="~/img/blog/@item.Image" alt="post">
+                                            <div class="blog-hover">
+                                                <i class="fa fa-link"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="single-post-content">
+                                        <h4><a href="blog-details.html">@item.Blogname</a></h4>
+                                        <p>@item.Author  / @item.BlogWriteTime</p>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="single-post mb-30">
+                                    <div class="single-post-img">
+                                        <a href="blog-details.html">
+                                            <img style="width:90px;height:90px;object-fit:cover;" src="~/img/blog/@item.Image" alt="post">
+                                            <div class="blog-hover">
+                                                <i class="fa fa-link"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="single-post-content">
+                                        <h4><a href="blog-details.html">@item.Blogname</a></h4>
+                                        <p>@item.Author /  @item.BlogWriteTime</p>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div class="single-blog-widget">
+                        <h3>tags</h3>
+                        <div class="single-tag">
+                            <a asp-controller="Course" asp-action="Index" class="mr-10 mb-10">course</a>
+                            <a asp-controller="About" asp-action="Index" class="mr-10 mb-10">education</a>
+                            <a asp-controller="Teacher" asp-action="Index" class="mb-10">teachers</a>
+                            <a asp-controller="Blog" asp-action="Index" class="mr-10">learning</a>
+                            <a asp-controller="About" asp-action="Index" class="mr-10">university</a>
+                            <a asp-controller="Event" asp-action="Index">events</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Event Details End -->

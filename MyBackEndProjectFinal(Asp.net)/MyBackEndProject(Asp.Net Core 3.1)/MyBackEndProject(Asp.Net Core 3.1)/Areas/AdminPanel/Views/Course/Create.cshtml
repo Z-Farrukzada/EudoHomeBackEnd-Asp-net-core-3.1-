@@ -1,0 +1,210 @@
+﻿@model Course
+@{
+    ViewData["Title"] = "Create";
+}
+@section style{
+
+
+}
+<div class="container">
+    <form method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="title">Create Course</h3>
+                    </div>
+                    <div class="card-body w-100">
+
+                        <div class="row ">
+                            <div asp-validation-summary="ModelOnly" class="text-white"></div>
+                            <div class="col-md-12 px-md-1">
+                                <div class="form-group">
+                                    <label asp-for="CourseName" class="ml-3"></label>
+                                    <input asp-for="CourseName" class="form-control">
+                                    <span asp-validation-for="CourseName"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-md-1">
+                                <div class="form-group">
+                                    <label asp-for="Description"></label>
+                                    <input asp-for="Description" class="form-control" />
+                                    <span asp-validation-for="Description"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-md-1">
+                                <div class="form-group">
+                                    <label asp-for="Duration"></label>
+                                    <input asp-for="Duration" class="form-control" />
+                                    <span asp-validation-for="Duration"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-md-1">
+                                <div class="form-group">
+                                    <label asp-for="ClassDuration"></label>
+                                    <input asp-for="ClassDuration" class="form-control" />
+                                    <span asp-validation-for="ClassDuration"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-md-1">
+                                <div class="form-group">
+                                    <label asp-for="SkillLevel"></label>
+                                    <input asp-for="SkillLevel" class="form-control" />
+                                    <span asp-validation-for="SkillLevel"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-md-1">
+                                <div class="form-group">
+                                    <label asp-for="Language"></label>
+                                    <input asp-for="Language" class="form-control" />
+                                    <span asp-validation-for="Language"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-md-1">
+                                <div class="form-group">
+                                    <label asp-for="StudentCapacity"></label>
+                                    <input asp-for="StudentCapacity" class="form-control" />
+                                    <span asp-validation-for="StudentCapacity"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-md-1">
+                                <div class="form-group">
+                                    <label asp-for="Assetsments"></label>
+                                    <input asp-for="Assetsments" class="form-control" />
+                                    <span asp-validation-for="Assetsments"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-md-1">
+                                <div class="form-group">
+                                    <label asp-for="CoursePrice"></label>
+                                    <input asp-for="CoursePrice" class="form-control" />
+                                    <span asp-validation-for="CoursePrice"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-md-1">
+                                <div class="form-group">
+                                    <label asp-for="StartCourse"></label>
+                                    <input asp-for="StartCourse" class="form-control" />
+                                    <span asp-validation-for="StartCourse"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-md-1">
+                                <div class="form-group">
+                                    <label asp-for="AboutCourse"></label>
+                                    <input asp-for="AboutCourse" class="form-control" />
+                                    <span asp-validation-for="AboutCourse"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-md-1">
+                                <div class="form-group">
+                                    <label asp-for="HowDoApply"></label>
+                                    <input asp-for="HowDoApply" class="form-control" />
+                                    <span asp-validation-for="HowDoApply"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-md-1">
+                                <div class="form-group">
+                                    <label asp-for="Certification"></label>
+                                    <input asp-for="Certification" class="form-control" />
+                                    <span asp-validation-for="Certification"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <h5 class="mt-2">Students</h5>
+                        <select name="userId" id="userId" class="form-control mt-3">
+                            @foreach (var user in ViewBag.CourseUser)
+                            {
+                                <option style="background-color:rgb(30, 30, 42)!important;" value="@user.Id">@user.FullName</option>
+                            }
+                        </select>
+
+
+                    </div>
+                 
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-fill btn-primary">Create</button>
+                        <a class="btn btn-primary mx-3 float-right" asp-controller="Course" asp-action="Index" asp-area="AdminPanel"> Back </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-user">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <div class="author">
+
+                                <div class="form-group d-flex flex-column">
+                                    <label asp-for="PhotoCourse" class="h2 text-white mb-5" style="font-size:18px;"></label>
+                                    <input asp-for="PhotoCourse" accept="image/*" class="form-control">
+                                    <span asp-validation-for="PhotoCourse" class="text-danger"></span>
+                                    <img src="~/img/AdminLogoUpload/instagram-logo.png" style="width:200px;height:200px;margin:0 auto;" id="uploadimage" alt="Alternate Text" />
+                                </div>
+                            </div>
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+</div>
+@section Script{
+    <partial name="_ScriptRender" />
+
+    <script>
+
+       
+
+        let upload = document.getElementById("uploadimage");
+
+        upload.onclick = function () {
+            this.previousElementSibling.previousElementSibling.onclick();
+        }
+
+
+
+
+
+    </script>
+
+
+}
